@@ -1,1 +1,2 @@
-#### Status of repo: Migrating legacy theseus app into Typescript, Prisma and Zod
+#### Status of repo: 
+👷‍♂️ Migrating legacy theseus app into Typescript, Prisma and Zod
