@@ -13,43 +13,47 @@ const Header: React.FC<Props> = ({ children }: Props) => {
 
 	return (
 		<>
-			<header className='w-screen border h-[80px] flex items-center px-12 justify-between gap-3 fixed top-0 left-0 right-0 z-50 backdrop-blur-md  drop-shadow-lg '>
+			<header
+				className={`w-screen ${
+					!isOpen && 'border'
+				} h-[80px] flex items-center px-12 xl:px-28 2xl:px-52 justify-between gap-3 fixed top-0 left-0 right-0 z-50 backdrop-blur-lg  drop-shadow-lg`}
+			>
 				<div className='flex items-center gap-20'>
 					<h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold'>Theseus.</h1>
 					{/* Desktop menu */}
-					<ul className='md:flex gap-8 hidden'>
-						<li className='w-36   cursor-pointer text-gray-600 hover:text-black hover:font-semibold transition duration-200'>
+					<ul className='lg:flex gap-8 hidden'>
+						<li className='cursor-pointer text-gray-600 hover:text-black transition duration-200'>
 							Διπλωματικές
 						</li>
-						<li className='w-36    cursor-pointer text-gray-600 hover:text-black hover:font-semibold transition duration-200'>
-							Κάτι διαφορετικό
+						<li className=' cursor-pointer text-gray-600 hover:text-black transition duration-200'>
+							Οι αιτήσεις μου
 						</li>
-						<li className='w-36    cursor-pointer text-gray-600 hover:text-black hover:font-semibold transition duration-200'>
-							Random
+						<li className=' cursor-pointer text-gray-600 hover:text-black transition duration-200'>
+							Πληροφορίες
 						</li>
 					</ul>
 				</div>
 				{/* Mobile Menu */}
-				<h1 className='text-lg text-black hidden md:block truncate'>Παναγιώτης Τσανάκας</h1>
+				<h1 className='text-lg text-black hidden lg:block truncate'>Παναγιώτης Τσανάκας</h1>
 				{isOpen ? (
-					<GrClose size={30} className='md:hidden' onClick={close} />
+					<GrClose size={30} className='lg:hidden' onClick={close} />
 				) : (
-					<FiMenu size={30} className='md:hidden' onClick={open} />
+					<FiMenu size={30} className='lg:hidden' onClick={open} />
 				)}
 			</header>
 
 			{isOpen && (
-				<ul className='md:hidden fixed top-[80px] left-0 right-0 w-screen p-5 z-50 backdrop-blur-md border-b border-gray-300'>
-					<li className=' text-gray-600 my-4 ' onClick={close}>
+				<ul className='lg:hidden fixed top-[80px] left-0 right-0 w-screen px-5 z-50 backdrop-blur-md border-b border-gray-300 drop-shadow-sm'>
+					<li className=' text-gray-600 my-4 text-center' onClick={close}>
 						Διπλωματικές
 					</li>
-					<li className=' text-gray-600 my-4 ' onClick={close}>
-						Κάτι διαφορετικό
+					<li className=' text-gray-600 my-4 text-center ' onClick={close}>
+						Οι αιτήσεις μου
 					</li>
-					<li className=' text-gray-600 my-4 ' onClick={close}>
-						Random
+					<li className=' text-gray-600 my-4  text-center' onClick={close}>
+						Πληροφορίες
 					</li>
-					<li className=' text-gray-600 my-4 ' onClick={close}>
+					<li className=' text-gray-600 my-4  text-center' onClick={close}>
 						Sign out
 					</li>
 				</ul>
