@@ -1,4 +1,4 @@
-import Header from '@/containers/Header'
+import Header from '@/containers/header/Header'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { Inter } from '@next/font/google'

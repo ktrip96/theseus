@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = {}
 
-const index = (props: Props) => {
+const info = (props: Props) => {
 	return (
 		<div>
 			<div className='w-3/4 m-auto my-4'>
@@ -56,4 +56,4 @@ const index = (props: Props) => {
 	)
 }
 
-export default index
+export default info
