@@ -4,6 +4,7 @@ import { GrClose } from 'react-icons/gr'
 import { useRouter } from 'next/router'
 import Navbar from './Navbar'
 import { getUsertypeFromURL } from '@/utils/routing'
+import Link from 'next/link'
 
 type HeaderProps = {
 	children: ReactNode
@@ -14,30 +15,30 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
 	const router = useRouter()
 	const userType = getUsertypeFromURL(router.asPath)
 
-	const open = () => setIsOpen(true)
-
 	return (
 		<>
 			<header
-				className={`w-screen h-[80px] flex items-center px-12 xl:px-28 2xl:px-52 justify-between gap-3 fixed top-0 left-0 right-0 z-50 backdrop-blur-lg  drop-shadow-lg ${
+				className={`w-screen h-[80px] flex items-center px-12 xl:px-28 2xl:px-52  gap-3 fixed top-0 left-0 right-0 z-50 backdrop-blur-lg  drop-shadow-lg ${
 					!isOpen && 'border'
 				} `}
 			>
 				<div className='flex items-center gap-20'>
-					<h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold'>Theseus.</h1>
+					<Link href='/'>
+						<h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold'>Theseus.</h1>
+					</Link>
 					{/* Desktop menu */}
 					<ul className='lg:flex gap-8 hidden'>
 						<Navbar userType={userType} closeMenu={() => setIsOpen(false)} />
 					</ul>
 				</div>
-				<h1 className='text-lg text-black hidden lg:block truncate'>Παναγιώτης Τσανάκας</h1>
+				<h1 className='ml-auto text-lg text-black hidden lg:block truncate'>Παναγιώτης Τσανάκας</h1>
 
 				{/* Mobile Menu */}
 
 				{isOpen ? (
-					<GrClose size={30} className='lg:hidden' onClick={() => setIsOpen(false)} />
+					<GrClose size={30} className='ml-auto lg:hidden' onClick={() => setIsOpen(false)} />
 				) : (
-					<FiMenu size={30} className='lg:hidden' onClick={open} />
+					<FiMenu size={30} className='ml-auto lg:hidden' onClick={() => setIsOpen(true)} />
 				)}
 			</header>
 

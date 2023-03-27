@@ -14,6 +14,7 @@ const Table = (props: Props) => {
 						<th className='p-3 text-sm font-semibold tracking-wide text-left'>Κατάσταση</th>
 						<th className='p-3 text-sm font-semibold tracking-wide text-left'>Ημερομηνία</th>
 						<th className='p-3 text-sm font-semibold tracking-wide text-left'>Ροή</th>
+						<th className='p-3 text-sm font-semibold tracking-wide text-left'>Ροή</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -11,19 +11,21 @@ const Navbar: React.FC<MenuListProps> = ({ userType, closeMenu }) => {
 		case 'student':
 			return (
 				<>
-					<li
-						className='cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
-						onClick={closeMenu}
-					>
-						Μαθητής
-					</li>
+					<Link href='/student/thesis'>
+						<li
+							className='cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Όλες οι διπλωματικές
+						</li>
+					</Link>
 
-					<Link href='/info'>
+					<Link href='/student/request'>
 						<li
 							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
 							onClick={closeMenu}
 						>
-							Πληροφορίες
+							Οι αιτήσεις μου
 						</li>
 					</Link>
 				</>
@@ -31,19 +33,81 @@ const Navbar: React.FC<MenuListProps> = ({ userType, closeMenu }) => {
 		case 'teacher':
 			return (
 				<>
-					<li
-						className='cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
-						onClick={closeMenu}
-					>
-						Καθηγητής
-					</li>
-
-					<Link href='/info'>
+					<Link href='/teacher/new'>
 						<li
 							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
 							onClick={closeMenu}
 						>
-							Πληροφορίες
+							Νέα διπλωματική
+						</li>
+					</Link>
+					<Link href='/teacher/mythesis'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Οι διπλωματικές μου
+						</li>
+					</Link>
+					<Link href='/teacher/thesis'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Όλες οι διπλωματικές
+						</li>
+					</Link>
+					<Link href='/teacher/request'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Αιτήματα
+						</li>
+					</Link>
+				</>
+			)
+		case 'sudoteacher':
+			return (
+				<>
+					<Link href='/sudoteacher/new'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Νέα διπλωματική
+						</li>
+					</Link>
+					<Link href='/sudoteacher/mythesis'>
+						<li
+							className='truncate cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Οι διπλωματικές μου
+						</li>
+					</Link>
+					<Link href='/sudoteacher/thesis'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Όλες οι διπλωματικές
+						</li>
+					</Link>
+					<Link href='/sudoteacher/request'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Αιτήματα
+						</li>
+					</Link>
+					<Link href='/sudoteacher/request'>
+						<li
+							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
+							onClick={closeMenu}
+						>
+							Εγκρίσεις
 						</li>
 					</Link>
 				</>
