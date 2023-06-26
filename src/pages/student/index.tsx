@@ -1,20 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
+import HowItWorks from '@/modules/student/main/HowItWorks'
+import Welcome from '@/modules/student/main/Welcome'
 import React from 'react'
 
-type Props = {}
-
-const index = (props: Props) => {
+const MainStudent = () => {
 	return (
 		<div className='w-full md:w-3/4 m-auto my-4'>
-			<h1 className='text-3xl font-bold text-center my-6'>Καλώς ήρθες</h1>
-			<p className='text-xs text-gray-500 text-center w-3/4 m-auto pb-8 border-b border-gray-200'>
-				Ο Θησέας είναι μια εφαρμογή διαχείρισης των αιτήσεων <br /> για τις διπλωματικές που αφορούν στο
-				Πολυτεχνείο.
-			</p>
-
-			{/* Περιγραφή του κάθε section */}
+			<Welcome />
+			<HowItWorks />
+			{/* Προσφατες διπλωματικές εδώ , όπως εδώ https://vercel.com/docs*/}
 		</div>
 	)
 }
 
-export default index
+export default MainStudent
