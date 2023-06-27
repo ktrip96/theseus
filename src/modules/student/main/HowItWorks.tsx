@@ -1,8 +1,8 @@
 // import Button from '@/components/Button'
 import { Button } from '@/components/ui/button'
 import { TypographyH3 } from '@/components/typographies/TypographyH3'
-import { TypographyP } from '@/components/typographies/TypographyP'
 import React from 'react'
+import Link from 'next/link'
 
 const HowItWorks = () => {
 	return (
@@ -21,11 +21,11 @@ const HowItWorks = () => {
 				</ul>
 			</div>
 			<div className='flex items-center justify-center gap-4'>
-				<Button className='md:text-lg' variant='ghost'>
-					Γενικές πληροφορίες
+				<Button variant='ghost' asChild>
+					<Link href='/info'>Γενικές πληροφορίες</Link>
 				</Button>
-				<Button className='md:text-lg' variant='default'>
-					Δες τις διπλωματικές
+				<Button variant='default' asChild>
+					<Link href='student/thesis'>Δες τις διπλωματικές</Link>
 				</Button>
 			</div>
 		</section>
