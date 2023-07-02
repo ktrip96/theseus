@@ -9,7 +9,7 @@ import {
 } from '@tanstack/react-table'
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Button } from './ui/button'
+import { Button } from '../../../../components/ui/button'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { ThesisTableType } from '@/types/thesis'

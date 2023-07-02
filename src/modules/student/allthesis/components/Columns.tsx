@@ -2,10 +2,10 @@ import { ThesisTableType } from '@/types/thesis'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { ArrowUpDown } from 'lucide-react'
 import { ColumnDef } from '@tanstack/react-table'
-import { Badge } from './ui/badge'
-import { Button } from './ui/button'
+import { Badge } from '../../../../components/ui/badge'
+import { Button } from '../../../../components/ui/button'
 
-export const columns: ColumnDef<ThesisTableType>[] = [
+export const AllThesisStudentColumns: ColumnDef<ThesisTableType>[] = [
 	{
 		accessorKey: 'title',
 		header: ({ column }) => {

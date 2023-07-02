@@ -1,5 +1,5 @@
-import { columns } from '@/components/Columns'
-import { StudentThesisTable } from '@/components/StudentThesisTable'
+import { AllThesisStudentColumns } from './components/Columns'
+import { StudentThesisTable } from './components/StudentThesisTable'
 import { TypographyH4 } from '@/components/typographies/TypographyH4'
 import { mockThesisTableArray } from '@/mock/mockThesisTable'
 import {
@@ -42,6 +42,7 @@ const AllThesis = () => {
 			<div className='mt-2 mb-4'>
 				<TypographyH4>Όλες οι διπλωματικές</TypographyH4>
 			</div>
+			{/* Φίλτρα */}
 			<div className='flex gap-4 mb-6'>
 				<Select defaultValue={allTeachers} onValueChange={(e) => setSelectedTeacher(e)}>
 					<SelectTrigger className='w-fit px-4'>
@@ -76,7 +77,7 @@ const AllThesis = () => {
 				</Select>
 			</div>
 
-			<StudentThesisTable columns={columns} data={[...filteredThesis, ...filteredThesis]} />
+			<StudentThesisTable columns={AllThesisStudentColumns} data={[...filteredThesis, ...filteredThesis]} />
 		</div>
 	)
 }
