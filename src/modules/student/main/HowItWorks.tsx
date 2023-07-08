@@ -22,7 +22,7 @@ const HowItWorks = () => {
 			</div>
 			<div className='flex items-center justify-center gap-4'>
 				<Button variant='ghost' asChild>
-					<Link href='/info'>Γενικές πληροφορίες</Link>
+					<Link href='/student/info'>Γενικές πληροφορίες</Link>
 				</Button>
 				<Button variant='default' asChild>
 					<Link href='student/thesis'>Δες τις διπλωματικές</Link>
