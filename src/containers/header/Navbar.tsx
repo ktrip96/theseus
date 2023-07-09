@@ -28,7 +28,7 @@ const Navbar: React.FC<MenuListProps> = ({ userType, closeMenu }) => {
 							Οι αιτήσεις μου
 						</li>
 					</Link>
-					<Link href='/student//info'>
+					<Link href='/student/info'>
 						<li
 							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
 							onClick={closeMenu}
