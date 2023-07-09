@@ -1,9 +1,9 @@
-import { createUser } from '../../server/controllers/usersController'
+import connectToDatabase from '../../../utils/database'
 
-export default function handler(req, res) {
-	if (req.method === 'POST') {
-		createUser(req, res)
-	} else {
-		res.status(405).json({ error: 'Method not allowed' })
-	}
+export default async function handler(req, res) {
+	console.log('Request is : ', req.method)
+	console.log('Connecting to Mongo')
+	await connectToDatabase()
+	console.log('Front End Success Connection')
+	res.json({ text: 'Everyting ok!' })
 }
