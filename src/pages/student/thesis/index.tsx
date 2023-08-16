@@ -1,12 +1,12 @@
 import TableLoading from '@/components/TableLoading'
 import { TypographyH4 } from '@/components/typographies/TypographyH4'
 import AllThesis from '@/modules/student/allthesis/AllThesis'
-import { getAllTheses } from '@/pages/api/requests/thesis'
+import { getAllAvailableTheses } from '@/pages/api/requests/thesis'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
 const StudentThesisTablePage = () => {
-	const { isError, isLoading } = useQuery(['allTheses'], () => getAllTheses())
+	const { isError, isLoading } = useQuery(['allTheses'], () => getAllAvailableTheses())
 	if (isError) return <h1>Error</h1>
 
 	return (

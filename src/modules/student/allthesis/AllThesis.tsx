@@ -14,18 +14,19 @@ import {
 import React, { useMemo, useState } from 'react'
 import { formatDate, getDistinctFields } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
-import { getAllTheses } from '@/pages/api/requests/thesis'
+import { getAllAvailableTheses } from '@/pages/api/requests/thesis'
 import { ThesisTableType } from '@/types/thesis'
 
 const allTeachers = 'Όλοι οι καθηγητές'
 const allFlows = 'Όλες οι ροές'
 
 const AllThesis = () => {
-	const { data } = useQuery(['allTheses'], () => getAllTheses())
+	const { data } = useQuery(['allTheses'], () => getAllAvailableTheses())
 
 	const transformedData: ThesisTableType[] = data!.result!.map((thesis) => {
 		return {
-			id: thesis.title,
+			//@ts-ignore
+			id: thesis._id,
 			title: thesis.title,
 			flow: thesis.flow,
 			teacherName: thesis.creator.name,

@@ -1,8 +1,8 @@
 import { Schema, model, models, Document } from 'mongoose'
 import { TeacherType } from './Teacher'
 
-type ThesisStatus = 'available' | 'sector' | 'secretary' | 'inprogress' | 'completed'
-export type FlowType = 'Λ' | 'Υ' | 'Ε' | 'Ζ'
+type ThesisStatus = 'available' | 'inprogress' | 'completed'
+export type FlowType = 'Λ' | 'Υ' | 'Ε' | 'Ζ' | 'Τ'
 
 export type ThesisType = {
 	title: string
@@ -36,7 +36,7 @@ const thesisSchema = new Schema<MongoThesisType>({
 	},
 	status: {
 		type: String,
-		enum: ['0', '1', '2'],
+		enum: ['availalbe', 'inprogress', 'completed'],
 		required: true,
 	},
 

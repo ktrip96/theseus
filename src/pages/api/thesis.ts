@@ -8,19 +8,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse>) =
 		await connectToDatabase()
 
 		let response: ApiResponse
-		let id: string // Declare id variable here
+		let id: string
 
 		switch (req.method) {
 			case 'GET':
-				let allTheses
-				// const allTheses = await Thesis.find().populate('creator')
-				if (req.query.status !== undefined)
-					allTheses = await Thesis.find({ status: req.query.status }).populate('creator')
-				else allTheses = await Thesis.find().populate('creator')
+				let getResult
+				const thesisId = req.query.id
+				// Return the data for a single Thesis
+				if (thesisId !== undefined) getResult = await Thesis.find({ _id: thesisId }).populate('creator')
+				else {
+					// Return all the thesis with a specific status
+					if (req.query.status !== undefined)
+						getResult = await Thesis.find({ status: req.query.status }).populate('creator')
+					// Return all the thesis
+					else getResult = await Thesis.find().populate('creator')
+				}
 				response = {
 					message: 'Success',
 					isError: false,
-					result: allTheses,
+					result: getResult,
 				}
 				break
 
@@ -44,7 +50,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse>) =
 				break
 
 			case 'PUT':
-				id = req.query.id as string // Assign the id here
+				id = req.query.id as string
 				const updatedThesis = await Thesis.findByIdAndUpdate(id, req.body, { new: true })
 				if (!updatedThesis) {
 					return res.status(404).json({
@@ -60,7 +66,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse>) =
 				break
 
 			case 'DELETE':
-				id = req.query.id as string // Assign the id here
+				id = req.query.id as string
 				const deletedThesis = await Thesis.findByIdAndDelete(id)
 				if (!deletedThesis) {
 					return res.status(404).json({
