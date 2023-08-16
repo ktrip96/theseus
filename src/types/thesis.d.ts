@@ -1,5 +1,5 @@
 export type ThesisTableType = {
-	id: number
+	id: string
 	title: string
 	date: string
 	flow: string

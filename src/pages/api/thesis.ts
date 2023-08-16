@@ -1,23 +1,22 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import connectToDatabase from 'utils/database'
-import Thesis, { ThesisType } from 'models/Thesis'
+import Thesis, { MongoThesisType, ThesisType } from 'models/Thesis'
+import { ApiResponse } from './student'
 
-export type MessageResponse = {
-	message: string
-	isError: boolean
-	result?: any
-}
-
-const handler = async (req: NextApiRequest, res: NextApiResponse<ThesisType | MessageResponse>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse>) => {
 	try {
 		await connectToDatabase()
 
-		let response: MessageResponse
+		let response: ApiResponse
 		let id: string // Declare id variable here
 
 		switch (req.method) {
 			case 'GET':
-				const allTheses = await Thesis.find()
+				let allTheses
+				// const allTheses = await Thesis.find().populate('creator')
+				if (req.query.status !== undefined)
+					allTheses = await Thesis.find({ status: req.query.status }).populate('creator')
+				else allTheses = await Thesis.find().populate('creator')
 				response = {
 					message: 'Success',
 					isError: false,
@@ -27,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ThesisType | Me
 
 			case 'POST':
 				const { title, description, lesson, status, flow, creator } = req.body
-				const newThesis: ThesisType = new Thesis({
+				const newThesis: MongoThesisType = new Thesis({
 					title,
 					description,
 					lesson,

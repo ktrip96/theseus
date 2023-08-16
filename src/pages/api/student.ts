@@ -2,17 +2,17 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import connectToDatabase from 'utils/database'
 import Student, { StudentType } from 'models/Student'
 
-export type MessageResponse = {
+export type ApiResponse<T = any> = {
 	message: string
 	isError: boolean
-	result?: any
+	result?: T
 }
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<StudentType | MessageResponse>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<StudentType | ApiResponse>) => {
 	try {
 		await connectToDatabase()
 
-		let response: MessageResponse
+		let response: ApiResponse
 		let id: string
 
 		switch (req.method) {

@@ -1,20 +1,22 @@
 import { Schema, model, models, Document } from 'mongoose'
 import { TeacherType } from './Teacher'
 
-type ThesisStatus = '0' | '1' | '2'
+type ThesisStatus = 'available' | 'sector' | 'secretary' | 'inprogress' | 'completed'
 export type FlowType = 'Λ' | 'Υ' | 'Ε' | 'Ζ'
 
-export type ThesisType = Document & {
+export type ThesisType = {
 	title: string
 	description: string
 	lesson: string
-	creationDate: Date
+	creationDate: string
 	status: ThesisStatus
 	flow: FlowType
 	creator: TeacherType['_id']
 }
 
-const thesisSchema = new Schema<ThesisType>({
+export type MongoThesisType = Document & ThesisType
+
+const thesisSchema = new Schema<MongoThesisType>({
 	title: {
 		type: String,
 		required: true,
@@ -29,8 +31,8 @@ const thesisSchema = new Schema<ThesisType>({
 		required: true,
 	},
 	creationDate: {
-		type: Date,
-		default: Date.now,
+		type: String,
+		default: Date.now.toString(),
 	},
 	status: {
 		type: String,

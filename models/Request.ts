@@ -1,10 +1,10 @@
 import { models, model, Document, Schema } from 'mongoose'
 import { StudentType } from './Student'
-import { ThesisType } from './Thesis'
+import { MongoThesisType } from './Thesis'
 
 export type RequestType = Document & {
 	student: StudentType['_id']
-	thesis: ThesisType['_id']
+	thesis: MongoThesisType['_id']
 	status: string
 }
 

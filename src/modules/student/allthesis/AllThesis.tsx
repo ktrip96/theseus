@@ -1,6 +1,5 @@
 import { AllThesisStudentColumns } from './components/Columns'
 import { StudentThesisTable } from './components/StudentThesisTable'
-import { TypographyH4 } from '@/components/typographies/TypographyH4'
 import { mockThesisTableArray } from '@/mock/mockThesisTable'
 import {
 	Select,
@@ -13,35 +12,46 @@ import {
 } from '@/components/ui/select'
 
 import React, { useMemo, useState } from 'react'
-import { getDistinctFields } from '@/lib/utils'
+import { formatDate, getDistinctFields } from '@/lib/utils'
+import { useQuery } from '@tanstack/react-query'
+import { getAllTheses } from '@/pages/api/requests/thesis'
+import { ThesisTableType } from '@/types/thesis'
 
 const allTeachers = 'Όλοι οι καθηγητές'
 const allFlows = 'Όλες οι ροές'
 
 const AllThesis = () => {
-	//	TODO: React Query call to get the data
+	const { data } = useQuery(['allTheses'], () => getAllTheses())
+
+	const transformedData: ThesisTableType[] = data!.result!.map((thesis) => {
+		return {
+			id: thesis.title,
+			title: thesis.title,
+			flow: thesis.flow,
+			teacherName: thesis.creator.name,
+			date: formatDate(thesis.creationDate),
+		}
+	})
+
 	const teacherFilterArray = useMemo(
-		() => [allTeachers, ...Array.from(getDistinctFields(mockThesisTableArray, 'teacherName'))],
-		[]
+		() => [allTeachers, ...Array.from(getDistinctFields(transformedData, 'teacherName'))],
+		[transformedData]
 	)
 	const flowFilterArray = useMemo(
-		() => [allFlows, ...Array.from(getDistinctFields(mockThesisTableArray, 'flow'))],
-		[]
+		() => [allFlows, ...Array.from(getDistinctFields(transformedData, 'flow'))],
+		[transformedData]
 	)
 	const [selectedTeacher, setSelectedTeacher] = useState<string>(allTeachers)
 	const [selectedFlow, setSelectedFlow] = useState<string>(allFlows)
 
-	const filteredThesis = mockThesisTableArray.filter(
+	const filteredThesis = transformedData.filter(
 		(thesis) =>
 			(selectedTeacher === allTeachers || thesis.teacherName === selectedTeacher) &&
 			(thesis.flow === selectedFlow || selectedFlow === allFlows)
 	)
 
 	return (
-		<div className='container mx-auto'>
-			<div className='mt-2 mb-4'>
-				<TypographyH4>Όλες οι διπλωματικές</TypographyH4>
-			</div>
+		<>
 			{/* Φίλτρα */}
 			<div className='flex gap-4 mb-6'>
 				<Select defaultValue={allTeachers} onValueChange={(e) => setSelectedTeacher(e)}>
@@ -77,8 +87,8 @@ const AllThesis = () => {
 				</Select>
 			</div>
 
-			<StudentThesisTable columns={AllThesisStudentColumns} data={[...filteredThesis, ...filteredThesis]} />
-		</div>
+			<StudentThesisTable columns={AllThesisStudentColumns} data={filteredThesis} />
+		</>
 	)
 }
 

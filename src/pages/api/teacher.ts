@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import connectToDatabase from 'utils/database'
 import Teacher, { TeacherType } from 'models/Teacher'
-import { MessageResponse } from './student'
+import { ApiResponse } from './student'
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<TeacherType | MessageResponse>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<TeacherType | ApiResponse>) => {
 	try {
 		await connectToDatabase()
 
-		let response: MessageResponse
+		let response: ApiResponse
 		let id: string // Declare id variable here
 
 		switch (req.method) {
