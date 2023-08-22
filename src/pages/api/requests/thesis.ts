@@ -11,3 +11,11 @@ export const getSingleThesis = (thesisID: string | string[]): Promise<ApiRespons
 	const url = `/api/thesis?id=${thesisID}`
 	return axios.get(url).then((r) => r.data)
 }
+
+export const setSingleThesis = (
+	thesisID: string | string[],
+	updatedBody: any
+): Promise<ApiResponse<ThesisType>> => {
+	const url = `/api/thesis?id=${thesisID}`
+	return axios.put(url, updatedBody).then((r) => r.data)
+}
