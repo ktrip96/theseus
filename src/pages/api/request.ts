@@ -21,17 +21,26 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RequestType | A
 				break
 
 			case 'POST':
-				const { student, thesis } = req.body
-				const newRequest: RequestType = new Request({
-					student,
-					thesis,
-					status: 'pending', // Set the initial status as 'pending'
-				})
-				const savedRequest = await newRequest.save()
-				response = {
-					message: 'Request created successfully',
-					isError: false,
-					result: savedRequest,
+				const { student, thesis, teacher } = req.body
+				const existingRequest = await Request.findOne({ student, teacher })
+				if (existingRequest) {
+					response = {
+						message: 'Request already exists for this student and thesis',
+						isError: true,
+					}
+				} else {
+					const newRequest: RequestType = new Request({
+						student,
+						thesis,
+						teacher,
+						status: 'pending', // Set the initial status as 'pending'
+					})
+					const savedRequest = await newRequest.save()
+					response = {
+						message: 'Request created successfully',
+						isError: false,
+						result: savedRequest,
+					}
 				}
 				break
 

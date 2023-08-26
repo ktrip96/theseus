@@ -7,6 +7,7 @@ import '@uiw/react-markdown-preview/markdown.css'
 import { Button } from '@/components/ui/button'
 import { getSingleThesis } from '@/pages/api/requests/thesis'
 import { useQuery, useMutation } from '@tanstack/react-query'
+import { createNewRequest } from '@/pages/api/requests/request'
 
 const MarkdownPreview = dynamic(() => import('@uiw/react-markdown-preview').then((mod) => mod.default), {
 	ssr: false,
@@ -21,6 +22,16 @@ const SingleThesis = () => {
 	if (result === undefined) return null
 
 	const { title, creator, lesson, description, status } = result[0]
+	console.log(result[0])
+
+	const handleRequest = async () => {
+		try {
+			const response = await createNewRequest('64db64885ade85a2ab5553da', result[0]._id, creator._id)
+			console.log('Response : ', response)
+		} catch (error) {
+			console.log('Error', error)
+		}
+	}
 
 	return (
 		<div className='w-full'>
@@ -32,7 +43,9 @@ const SingleThesis = () => {
 						<p>{lesson}</p>
 					</div>
 					{status === 'available' ? (
-						<Button className='px-8'>Αίτηση</Button>
+						<Button className='px-8' onClick={handleRequest}>
+							Αίτηση
+						</Button>
 					) : (
 						<Button disabled className='px-8'>
 							{status}

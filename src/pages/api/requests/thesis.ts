@@ -2,6 +2,9 @@ import axios from 'axios'
 import { ApiResponse } from '../student'
 import { ThesisType } from 'models/Thesis'
 
+//	TODO : Maybe I should replace ThesisType with MongoThesisType in order to have access to the other stuff that MongoGives.
+//	And I also have to remove _id, from the ThesisType.
+
 export const getAllAvailableTheses = (): Promise<ApiResponse<ThesisType[]>> => {
 	const url = '/api/thesis?status=available'
 	return axios.get(url).then((r) => r.data)
