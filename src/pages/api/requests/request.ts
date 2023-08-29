@@ -11,3 +11,8 @@ export const createNewRequest = (
 	const url = '/api/request'
 	return axios.post(url, postBody).then((r) => r.data)
 }
+
+export const getAllRequestsOfAStudent = (studentID: string): Promise<ApiResponse<RequestType[]>> => {
+	const url = `/api/request?student=${studentID}`
+	return axios.get(url).then((r) => r.data)
+}

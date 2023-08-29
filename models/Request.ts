@@ -12,7 +12,7 @@ export type RequestType = Document & {
 const requestSchema = new Schema<RequestType>({
 	student: { type: Schema.Types.ObjectId, ref: 'Student', required: true },
 	thesis: { type: Schema.Types.ObjectId, ref: 'Thesis', required: true },
-	teacher: { type: Schema.Types.ObjectId, ref: 'Thesis', required: true },
+	teacher: { type: Schema.Types.ObjectId, ref: 'Teacher', required: true },
 	status: { type: String, required: true },
 })
 

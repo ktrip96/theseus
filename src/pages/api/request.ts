@@ -12,17 +12,37 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RequestType | A
 
 		switch (req.method) {
 			case 'GET':
-				const allRequests = await Request.find()
-				response = {
-					message: 'Success',
-					isError: false,
-					result: allRequests,
+				const studentId = req.query.student as string | undefined
+				const teacherId = req.query.teacher as string | undefined
+				if (studentId) {
+					const studentRequests = await Request.find({ student: studentId })
+						.populate('student')
+						.populate('thesis')
+					response = {
+						message: 'Success',
+						isError: false,
+						result: studentRequests,
+					}
+				} else if (teacherId) {
+					const teacherRequests = await Request.find({ teacher: teacherId })
+					response = {
+						message: 'Success',
+						isError: false,
+						result: teacherRequests,
+					}
+				} else {
+					const allRequests = await Request.find()
+					response = {
+						message: 'Success',
+						isError: false,
+						result: allRequests,
+					}
 				}
 				break
 
 			case 'POST':
 				const { student, thesis, teacher } = req.body
-				const existingRequest = await Request.findOne({ student, teacher })
+				const existingRequest = await Request.findOne({ student, thesis })
 				if (existingRequest) {
 					response = {
 						message: 'Request already exists for this student and thesis',

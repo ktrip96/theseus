@@ -22,10 +22,11 @@ const SingleThesis = () => {
 	if (result === undefined) return null
 
 	const { title, creator, lesson, description, status } = result[0]
-	console.log(result[0])
 
 	const handleRequest = async () => {
 		try {
+			//	TODO : Handle Loading + Error State
+			//	TODO: Replace XERATO ID with Normal Id that I will get from my GlobalState
 			const response = await createNewRequest('64db64885ade85a2ab5553da', result[0]._id, creator._id)
 			console.log('Response : ', response)
 		} catch (error) {
