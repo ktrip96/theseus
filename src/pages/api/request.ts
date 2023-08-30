@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<RequestType | A
 				const teacherId = req.query.teacher as string | undefined
 				if (studentId) {
 					const studentRequests = await Request.find({ student: studentId })
-						.populate('student')
+						.populate('teacher')
 						.populate('thesis')
 					response = {
 						message: 'Success',

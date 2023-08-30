@@ -37,7 +37,7 @@ const thesisSchema = new Schema<MongoThesisType>({
 	},
 	status: {
 		type: String,
-		enum: ['availalbe', 'inprogress', 'completed'],
+		enum: ['available', 'inprogress', 'completed'],
 		required: true,
 	},
 

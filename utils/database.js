@@ -22,6 +22,7 @@ async function connectToDatabase() {
 		Student
 		Thesis
 		Request
+
 		console.log('Connected to MongoDB')
 		return connection
 	} catch (error) {

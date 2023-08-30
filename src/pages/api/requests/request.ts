@@ -12,6 +12,11 @@ export const createNewRequest = (
 	return axios.post(url, postBody).then((r) => r.data)
 }
 
+export const deleteRequest = (requestID: string) => {
+	const url = `/api/request?id=${requestID}`
+	return axios.delete(url).then((r) => r.data)
+}
+
 export const getAllRequestsOfAStudent = (studentID: string): Promise<ApiResponse<RequestType[]>> => {
 	const url = `/api/request?student=${studentID}`
 	return axios.get(url).then((r) => r.data)

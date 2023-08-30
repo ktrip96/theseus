@@ -1,10 +1,10 @@
 import { TypographyH4 } from '@/components/typographies/TypographyH4'
-import { studentRequests } from '@/mock/mockStudentRequests'
 import React from 'react'
 import { RequestTable } from './components/RequestTable'
 import { StudentRequestColumns } from './components/RequestColumns'
 import { useQuery } from '@tanstack/react-query'
 import { getAllRequestsOfAStudent } from '@/pages/api/requests/request'
+import { formatDate } from '@/lib/utils'
 
 const AllRequests = () => {
 	//	TODO: Replace Xerato ID with authID
@@ -20,8 +20,6 @@ const AllRequests = () => {
 
 	if (data.result === undefined) return null
 
-	if (data.result.length === 0) return <h1>No Requests</h1>
-
 	const transformedRequests = data.result.map((d) => {
 		{
 			return {
@@ -30,16 +28,22 @@ const AllRequests = () => {
 				teacherName: d.teacher.name,
 				thesisId: d.thesis,
 				thesisTitle: d.thesis.title,
-				date: '30/05/2023',
+				date: formatDate(d.thesis.creationDate),
 			}
 		}
 	})
 	return (
 		<div className='container mx-2 '>
-			<div className='mt-2 mb-4'>
-				<TypographyH4>Οι αιτήσεις μου</TypographyH4>
-			</div>
-			<RequestTable columns={StudentRequestColumns} data={transformedRequests} />
+			{transformedRequests.length === 0 ? (
+				<h1>No requests</h1>
+			) : (
+				<>
+					<div className='mt-2 mb-4'>
+						<TypographyH4>Οι αιτήσεις μου</TypographyH4>
+					</div>
+					<RequestTable columns={StudentRequestColumns} data={transformedRequests} />
+				</>
+			)}
 		</div>
 	)
 }
