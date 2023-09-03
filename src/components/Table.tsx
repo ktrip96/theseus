@@ -5,7 +5,7 @@ type Props = {}
 const Table = (props: Props) => {
 	return (
 		<div>
-			<h1 className='font-semibold text-lg'>Table Component</h1>
+			<h4 className='font-semibold text-lg'>Table Component</h4>
 			<table className='w-full border border-gray-200 rounded-md  drop-shadow-sm shadow-md'>
 				<thead className=' bg-gray-50'>
 					<tr>

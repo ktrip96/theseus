@@ -14,9 +14,9 @@ const AllRequests = () => {
 		getAllRequestsOfAStudent('64db64885ade85a2ab5553de')
 	)
 
-	if (isLoading) return <h1>Loading</h1>
+	if (isLoading) return <h4>Loading</h4>
 
-	if (isError) return <h1>Error</h1>
+	if (isError) return <h4>Error</h4>
 
 	if (data.result === undefined) return null
 
@@ -35,7 +35,7 @@ const AllRequests = () => {
 	return (
 		<div className='container mx-2 '>
 			{transformedRequests.length === 0 ? (
-				<h1>No requests</h1>
+				<h4>No requests</h4>
 			) : (
 				<>
 					<div className='mt-2 mb-4'>

@@ -1,9 +1,8 @@
+import CreateNewThesis from '@/modules/teacher/CreateNewThesis'
 import React from 'react'
 
-type Props = {}
-
-const NewThesis = (props: Props) => {
-	return <div>NewThesis</div>
+const NewThesis = () => {
+	return <CreateNewThesis />
 }
 
 export default NewThesis

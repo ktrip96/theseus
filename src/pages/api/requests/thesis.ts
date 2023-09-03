@@ -22,3 +22,8 @@ export const setSingleThesis = (
 	const url = `/api/thesis?id=${thesisID}`
 	return axios.put(url, updatedBody).then((r) => r.data)
 }
+
+export const createNewThesis = (body: any) => {
+	const url = '/api/thesis'
+	return axios.post(url, body).then((r) => r.data)
+}

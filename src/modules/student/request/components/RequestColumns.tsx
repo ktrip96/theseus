@@ -31,7 +31,7 @@ export const StudentRequestColumns: ColumnDef<StudentRequestType>[] = [
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger className='max-w-[400px]'>
-						<h1 className='truncate'>{row.getValue('thesisTitle')}</h1>
+						<h4 className='truncate'>{row.getValue('thesisTitle')}</h4>
 					</TooltipTrigger>
 					<TooltipContent>{row.getValue('thesisTitle')}</TooltipContent>
 				</Tooltip>

@@ -20,7 +20,7 @@ export const AllThesisStudentColumns: ColumnDef<ThesisTableType>[] = [
 			<TooltipProvider>
 				<Tooltip>
 					<TooltipTrigger className='w-[95%] text-left'>
-						<h1 className='truncate'>{row.getValue('title')}</h1>
+						<p className='truncate'>{row.getValue('title')}</p>
 					</TooltipTrigger>
 					<TooltipContent>{row.getValue('title')}</TooltipContent>
 				</Tooltip>

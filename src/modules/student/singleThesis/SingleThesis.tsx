@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 import '@uiw/react-markdown-preview/markdown.css'
 import { Button } from '@/components/ui/button'
 import { getSingleThesis } from '@/pages/api/requests/thesis'
-import { useQuery, useMutation } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { createNewRequest } from '@/pages/api/requests/request'
 
 const MarkdownPreview = dynamic(() => import('@uiw/react-markdown-preview').then((mod) => mod.default), {

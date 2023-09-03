@@ -9,7 +9,7 @@ const ThesisWrapper = () => {
 
 	if (thesisID === undefined) {
 		// Early return if thesisID is undefined
-		return <h1>Loading...</h1>
+		return <h4>Loading...</h4>
 	}
 
 	return <SingleThesisContainer thesisID={thesisID} />
@@ -18,8 +18,8 @@ const ThesisWrapper = () => {
 const SingleThesisContainer = ({ thesisID }: { thesisID: string | string[] }) => {
 	const { isError, isLoading } = useQuery(['singleThesis', thesisID], () => getSingleThesis(thesisID))
 
-	if (isError) return <h1>Error</h1>
-	if (isLoading) return <h1>Loading</h1>
+	if (isError) return <h4>Error</h4>
+	if (isLoading) return <h4>Loading</h4>
 
 	return <SingleThesis />
 }

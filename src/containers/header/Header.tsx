@@ -24,14 +24,14 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
 			>
 				<div className='flex items-center gap-20'>
 					<Link href='/'>
-						<h1 className='text-2xl md:text-3xl lg:text-4xl font-semibold'>Theseus.</h1>
+						<h4 className='text-2xl md:text-3xl lg:text-4xl font-semibold'>Theseus.</h4>
 					</Link>
 					{/* Desktop menu */}
-					<ul className='lg:flex gap-8 hidden'>
+					<ul className='lg:flex gap-8 hidden list-none'>
 						<Navbar userType={userType} closeMenu={() => setIsOpen(false)} />
 					</ul>
 				</div>
-				<h1 className='ml-auto text-lg text-black hidden lg:block truncate'>Παναγιώτης Τσανάκας</h1>
+				<h4 className='ml-auto text-lg text-black hidden lg:block truncate'>Παναγιώτης Τσανάκας</h4>
 
 				{/* Mobile Menu */}
 
@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
 			{/* Mobile Navbar  */}
 
 			{isOpen && (
-				<ul className='lg:hidden fixed top-[80px] left-0 right-0 w-screen px-5 pb-5 z-50 backdrop-blur-md border-b border-gray-300 drop-shadow-sm'>
+				<ul className='lg:hidden fixed top-[80px] left-0 right-0 w-screen px-5 pb-5 z-50 backdrop-blur-md border-b border-gray-300 drop-shadow-sm list-none'>
 					<Navbar userType={userType} closeMenu={() => setIsOpen(false)} />
 				</ul>
 			)}

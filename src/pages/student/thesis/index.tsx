@@ -7,7 +7,7 @@ import React from 'react'
 
 const StudentThesisTablePage = () => {
 	const { isError, isLoading } = useQuery(['allTheses'], () => getAllAvailableTheses())
-	if (isError) return <h1>Error</h1>
+	if (isError) return <h4>Error</h4>
 
 	return (
 		<div className='container mx-auto'>
