@@ -57,7 +57,7 @@ const Navbar: React.FC<MenuListProps> = ({ userType, closeMenu }) => {
 							Οι διπλωματικές μου
 						</li>
 					</Link>
-					<Link href='/teacher/thesis'>
+					<Link href='/teacher/allthesis'>
 						<li
 							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
 							onClick={closeMenu}
@@ -65,7 +65,7 @@ const Navbar: React.FC<MenuListProps> = ({ userType, closeMenu }) => {
 							Όλες οι διπλωματικές
 						</li>
 					</Link>
-					<Link href='/teacher/request'>
+					<Link href='/teacher/myrequests'>
 						<li
 							className=' cursor-pointer text-center text-gray-600 hover:text-black transition duration-200'
 							onClick={closeMenu}
