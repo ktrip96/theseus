@@ -12,14 +12,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Button } from '../../../../components/ui/button'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { StudentThesisTableType } from '@/types/thesis'
+import { TeacherMyThesisTableType } from '@/types/thesis'
 
-interface StudentThesisTableProps {
-	columns: ColumnDef<StudentThesisTableType>[]
-	data: StudentThesisTableType[]
+interface TeacherMyThesisTableProps {
+	columns: ColumnDef<TeacherMyThesisTableType>[]
+	data: TeacherMyThesisTableType[]
 }
 
-export function StudentThesisTable({ columns, data }: StudentThesisTableProps) {
+export function TeacherMyThesisTable({ columns, data }: TeacherMyThesisTableProps) {
 	const router = useRouter()
 	const [sorting, setSorting] = React.useState<SortingState>([])
 	const table = useReactTable({
@@ -60,14 +60,15 @@ export function StudentThesisTable({ columns, data }: StudentThesisTableProps) {
 									className='cursor-pointer'
 									key={row.id}
 									data-state={row.getIsSelected() && 'selected'}
-									onClick={() =>
-										router.push(
-											{
-												pathname: '/student/thesis/[dynamicID]',
-												query: { dynamicID: row.original.id },
-											},
-											`/student/thesis/${row.original.id}`
-										)
+									onClick={
+										() => alert('Click')
+										// router.push(
+										// 	{
+										// 		pathname: '/student/thesis/[dynamicID]',
+										// 		query: { dynamicID: row.original.id },
+										// 	},
+										// 	`/student/thesis/${row.original.id}`
+										// )
 									}
 								>
 									{row.getVisibleCells().map((cell) => (

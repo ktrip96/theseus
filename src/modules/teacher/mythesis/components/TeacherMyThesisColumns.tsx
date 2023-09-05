@@ -1,11 +1,10 @@
-import { StudentThesisTableType } from '@/types/thesis'
+import { TeacherMyThesisTableType } from '@/types/thesis'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { ArrowUpDown } from 'lucide-react'
 import { ColumnDef } from '@tanstack/react-table'
-import { Badge } from '../../../../components/ui/badge'
 import { Button } from '../../../../components/ui/button'
 
-export const AllThesisStudentColumns: ColumnDef<StudentThesisTableType>[] = [
+export const TeacherMyThesisColumns: ColumnDef<TeacherMyThesisTableType>[] = [
 	{
 		accessorKey: 'title',
 		header: ({ column }) => {
@@ -28,16 +27,23 @@ export const AllThesisStudentColumns: ColumnDef<StudentThesisTableType>[] = [
 		),
 	},
 	{
-		accessorKey: 'flow',
-		header: 'Ροή',
-		cell: ({ row }) => <Badge variant='default'>{row.getValue('flow')}</Badge>,
+		accessorKey: 'status',
+		header: 'Κατάσταση',
 	},
 	{
-		accessorKey: 'date',
-		header: 'Ημερομηνία',
-	},
-	{
-		accessorKey: 'teacherName',
-		header: 'Καθηγητής',
+		accessorKey: 'status',
+		header: '',
+		cell: ({ row }) => {
+			return (
+				<Button
+					onClick={(e) => {
+						e.stopPropagation()
+						alert('Διαγραφή')
+					}}
+				>
+					Διαγραφή
+				</Button>
+			)
+		},
 	},
 ]

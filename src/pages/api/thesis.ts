@@ -14,8 +14,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<ApiResponse>) =
 			case 'GET':
 				let getResult
 				const thesisId = req.query.id
+				const teacherId = req.query.teacherId
 				// Return the data for a single Thesis
 				if (thesisId !== undefined) getResult = await Thesis.find({ _id: thesisId }).populate('creator')
+				else if (teacherId !== undefined) getResult = await Thesis.find({ creator: teacherId })
 				else {
 					// Return all the thesis with a specific status
 					if (req.query.status !== undefined)

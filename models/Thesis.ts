@@ -1,7 +1,7 @@
 import { Schema, model, models, Document } from 'mongoose'
 import { TeacherType } from './Teacher'
 
-type ThesisStatus = 'available' | 'inprogress' | 'completed'
+export type ThesisStatus = 'available' | 'inprogress' | 'completed'
 export type FlowType = 'Λ' | 'Υ' | 'Ε' | 'Ζ' | 'Τ'
 
 export type ThesisType = {

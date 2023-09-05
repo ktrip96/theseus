@@ -1,6 +1,6 @@
-import type { ThesisTableType } from '../types/thesis'
+import type { StudentThesisTableType } from '../types/thesis'
 
-export const mockThesisTableArray: ThesisTableType[] = [
+export const mockThesisTableArray: StudentThesisTableType[] = [
 	{
 		id: '2',
 		title: 'Typescript',

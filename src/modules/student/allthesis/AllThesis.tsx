@@ -1,6 +1,5 @@
 import { AllThesisStudentColumns } from './components/Columns'
 import { StudentThesisTable } from './components/StudentThesisTable'
-import { mockThesisTableArray } from '@/mock/mockThesisTable'
 import {
 	Select,
 	SelectContent,
@@ -15,7 +14,7 @@ import React, { useMemo, useState } from 'react'
 import { formatDate, getDistinctFields } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
 import { getAllAvailableTheses } from '@/pages/api/requests/thesis'
-import { ThesisTableType } from '@/types/thesis'
+import { StudentThesisTableType } from '@/types/thesis'
 
 const allTeachers = 'Όλοι οι καθηγητές'
 const allFlows = 'Όλες οι ροές'
@@ -23,7 +22,7 @@ const allFlows = 'Όλες οι ροές'
 const AllThesis = () => {
 	const { data } = useQuery(['allTheses'], () => getAllAvailableTheses())
 
-	const transformedData: ThesisTableType[] = data!.result!.map((thesis) => {
+	const transformedData: StudentThesisTableType[] = data!.result!.map((thesis) => {
 		return {
 			//@ts-ignore
 			id: thesis._id,
